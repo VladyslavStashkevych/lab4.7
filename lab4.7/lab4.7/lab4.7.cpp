@@ -1,3 +1,9 @@
+// lab4.7.cpp
+// <Сташкевич Владислав>
+// Лабораторна робота № 4.7
+// Обчислення суми ряду Тейлора за допомогою ітераційних циклів та рекурентних співвідношень.
+// Варіант 19
+
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -15,23 +21,23 @@ int main() {
 
 	cout << fixed;
 	cout << "-------------------------------------------------\n";
-	cout << "|" << setw(7)  << "x"      << " |"
-				<< setw(10) << "exp(x)" << " |"
-				<< setw(10) << "Sum"    << " |"
-				<< setw(5)  << "n"      << " |\n";
+	cout << "|" << setw(7)  << "x"         << " |"
+				<< setw(10) << "arcsin(x)" << " |"
+				<< setw(10) << "Sum"       << " |"
+				<< setw(5)  << "n"		   << " |\n";
 	cout << "-------------------------------------------------\n";
 
 	for (x = xFirst; x <= xLast; x += dx) {
 		for (a = pow(x, 3) / 6., n = 2, Sum = x + a; abs(a) >= eps; n++) {
-			R = pow((2 * n - 1) * x, 2) / (2. * n * (2 * n + 1));
+			R = (pow((2 * n - 1), 2) * x * x) / (2. * n * (2 * n + 1));
 			a *= R;
 			Sum += a;
 		}
 
-		cout  << "|" << setw(7)  << setprecision(2) << x      << " |"
+		cout  << "|" << setw(7)  << setprecision(2) << x	   << " |"
 			         << setw(10) << setprecision(5) << asin(x) << " |"
-			         << setw(10) << setprecision(5) << Sum    << " |"
-			         << setw(5)					    << n      << " |\n";
+			         << setw(10) << setprecision(5) << Sum     << " |"
+			         << setw(5)					    << n       << " |\n";
 	}
 
 	cout << "-------------------------------------------------\n";
